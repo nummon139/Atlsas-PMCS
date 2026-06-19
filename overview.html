@@ -3,154 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATLAS Divisions & Training System</title>
+    <title>ATLAS PMC // GLOBAL STRATEGIC WARFARE INTERACTION</title>
     <style>
         :root {
-            --bg-dark: #0a0a0c;
-            --bg-card: #141418;
-            --primary-red: #da0012;
-            --text-light: #ffffff;
-            --text-muted: #a0a0aa;
-            --border-color: #2a2a32;
-            --eink-grid: rgba(255, 255, 255, 0.02);
+            --bg-black: #030304;
+            --bg-panel: #111217;
+            --terminal-green: #00ff66;
+            --blood-red: #990000;
+            --alert-orange: #ff5500;
+            --text-light: #e2e8f0;
+            --text-muted: #64748b;
+            --border-heavy: #1e293b;
+            --grid-line: rgba(153, 0, 0, 0.04);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace, 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
+        body { background-color: var(--bg-black); color: var(--text-light); line-height: 1.5; position: relative; overflow-x: hidden; }
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: linear-gradient(var(--eink-grid) 1px, transparent 1px), linear-gradient(90deg, var(--eink-grid) 1px, transparent 1px);
-            background-size: 30px 30px; z-index: -1; animation: einkMove 12s linear infinite; pointer-events: none;
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 25px 25px; z-index: -1; pointer-events: none;
         }
-        @keyframes einkMove { 0% { background-position: 0 0; } 100% { background-position: 30px 30px; } }
+        body::after {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: rgba(218, 0, 18, 0.1);
+            animation: scanline 6s linear infinite; z-index: 9999; pointer-events: none;
+        }
+        @keyframes scanline { 0% { top: -10px; } 100% { top: 100%; } }
 
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background-color: rgba(10, 10, 12, 0.95); border-bottom: 2px solid var(--primary-red); position: fixed; width: 100%; top: 0; z-index: 1000; }
-        .logo { font-size: 24px; font-weight: 900; letter-spacing: 4px; }
-        .logo span { color: var(--primary-red); }
+        /* 🔒 FIXED NAVBAR SETUP */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: rgba(3, 3, 4, 0.95); border-bottom: 2px solid var(--blood-red); position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(5px); }
+        .logo { font-size: 22px; font-weight: 900; letter-spacing: 3px; color: #fff; }
+        .logo span { color: var(--blood-red); }
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 20px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary-red); border-bottom: 2px solid var(--primary-red); padding-bottom: 5px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; padding: 5px 10px; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--blood-red); box-shadow: 0 0 10px rgba(153, 0, 0, 0.5); }
 
-        .container { padding: 120px 8% 60px 8%; }
-        .page-title { font-size: 36px; border-bottom: 2px dashed var(--border-color); padding-bottom: 20px; margin-bottom: 40px; }
-        .page-title span { color: var(--primary-red); }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
-        .card { background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 25px; position: relative; }
-        .card-tag { position: absolute; top: 15px; right: 25px; font-size: 11px; color: var(--primary-red); font-weight: bold; background: rgba(218,0,18,0.1); padding: 2px 8px; }
-        .card h3 { font-size: 20px; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
-        .card ul { list-style: none; padding-left: 5px; color: var(--text-muted); font-size: 14px; }
-        .card ul li { margin-bottom: 8px; }
-        .card ul li::before { content: "› "; color: var(--primary-red); font-weight: bold; }
+        header { 
+            height: 60vh; display: flex; flex-direction: column; justify-content: center; padding: 0 5%; margin-top: 75px; border-bottom: 3px double var(--blood-red); 
+            background: linear-gradient(to right, #030304 35%, rgba(153,0,0,0.15)), url('https://images.unsplash.com/photo-1547483238-f400e65ccd56?q=80&w=2070') no-repeat center center/cover;
+            background-blend-mode: multiply;
+        }
+        .warning-strip { background: repeating-linear-gradient(45deg, #ffe600, #ffe600 10px, #000 10px, #000 20px); height: 10px; width: 100%; position: absolute; left: 0; top: 73px; }
+        .mainframe-status { font-size: 12px; color: var(--terminal-green); margin-bottom: 10px; letter-spacing: 2px; }
+        header h1 { font-size: 55px; font-weight: 900; letter-spacing: -1px; max-width: 900px; margin-bottom: 15px; color: #fff; text-transform: uppercase; }
+        header h1 span { color: var(--blood-red); }
+        header p { font-size: 16px; color: #94a3b8; max-width: 750px; background: rgba(0,0,0,0.7); padding: 15px; border-left: 3px solid var(--blood-red); }
 
-        .training-row { display: grid; grid-template-columns: 80px 1fr; gap: 20px; margin-bottom: 20px; background: #111115; padding: 20px; border: 1px solid var(--border-color); }
-        .level-badge { background: var(--primary-red); color: #fff; font-weight: bold; display: flex; justify-content: center; align-items: center; font-size: 24px; }
+        .mainframe-container { padding: 40px 5%; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .main-panel-group, .side-panel-group { display: flex; flex-direction: column; gap: 35px; }
+        .terminal-block { background-color: var(--bg-panel); border: 1px solid var(--border-heavy); padding: 30px; position: relative; }
+        .terminal-block::before { content: "SYS_CONFIDENTIAL"; position: absolute; top: -10px; right: 20px; background: #220508; border: 1px solid var(--blood-red); padding: 1px 8px; color: var(--blood-red); font-size: 10px; }
+        .block-title { font-size: 22px; font-weight: bold; color: #fff; margin-bottom: 20px; border-bottom: 1px solid var(--blood-red); padding-bottom: 8px; }
+        .block-title span { color: var(--blood-red); }
 
-        footer { background: #050507; padding: 30px 8%; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-muted); font-size: 12px; }
+        .intel-list li { background: #08090d; border: 1px solid #1a1c23; padding: 15px; margin-bottom: 12px; border-left: 4px solid var(--blood-red); list-style: none; }
+        .intel-list li h4 { color: var(--alert-orange); font-size: 15px; margin-bottom: 5px; }
+        .intel-list li p { color: #94a3b8; font-size: 13px; }
+
+        .budget-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 12px; }
+        .budget-table th { background: #1c0507; color: var(--blood-red); padding: 10px; border: 1px solid var(--border-heavy); text-align: left; }
+        .budget-table td { padding: 10px; border: 1px solid var(--border-heavy); background: #08090d; }
+
+        .live-feed-box { background: #040507; border: 1px dashed var(--blood-red); padding: 15px; max-height: 250px; overflow-y: auto; font-size: 12px; color: var(--terminal-green); }
+        .feed-line { margin-bottom: 8px; }
+        .feed-line .loc { color: var(--alert-orange); font-weight: bold; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px; }
+        .stat-node { background: #07080a; border: 1px solid var(--border-heavy); padding: 15px; text-align: center; }
+        .stat-node .value { font-size: 24px; font-weight: bold; color: #fff; }
+        .stat-node .value.red { color: var(--blood-red); }
+        .stat-node .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-top: 5px; }
+
+        .critical-bar { background: var(--blood-red); color: #fff; text-align: center; padding: 8px; font-size: 11px; font-weight: bold; letter-spacing: 3px; }
+        footer { background: #020203; padding: 30px 5%; border-top: 1px solid var(--border-heavy); text-align: center; color: var(--text-muted); font-size: 11px; }
     </style>
 </head>
 <body>
 
+    <div class="warning-strip"></div>
+
     <nav>
-        <div class="logo">ATLAS<span>//PMSC</span></div>
+        <div class="logo">ATLAS<span>//RAW_WARFARE</span></div>
         <ul class="nav-links">
-            <li><a href="login.html">01 // LOGIN</a></li>
-            <li><a href="index.html">02 // OVERVIEW</a></li>
-            <li><a href="divisions.html" class="active">03 // DIVISIONS</a></li>
+            <li><a href="index.html">01 // LOGIN</a></li>
+            <li><a href="overview.html" class="active">02 // OVERVIEW</a></li>
+            <li><a href="divisions.html">03 // DIVISIONS</a></li>
             <li><a href="tech.html">04 // ARMAMENTS</a></li>
             <li><a href="careers.html">05 // RECRUITMENT</a></li>
         </ul>
     </nav>
 
-    <main class="container">
-        <h1 class="page-title">OPERATIONAL <span>DIVISIONS</span> // โครงสร้างส่วนปฏิบัติการ</h1>
-        
-        <div class="grid-3">
-            <div class="card">
-                <div class="card-tag">COMMAND</div>
-                <h3>Strategic Operations</h3>
-                <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">ศูนย์บัญชาการยุทธศาสตร์ส่วนกลาง</p>
-                <ul>
-                    <li>วางแผนภารกิจความมั่นคงระดับสูง</li>
-                    <li>บริหารและจัดสรรกำลังพลส่วนหน้า</li>
-                    <li>ประสานงานและเชื่อมต่อระหว่างหน่วยงาน</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-tag">FIELD FORCE</div>
-                <h3>Military Services</h3>
-                <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">กองกำลังภาคสนามและต่อสู้ส่วนหน้า</p>
-                <ul>
-                    <li>คุ้มกันบุคคลสำคัญ (VIP Protection)</li>
-                    <li>ป้องกันสถาปัตยกรรมและสถานที่สำคัญ</li>
-                    <li>คุ้มกันขบวนลำเลียงและยุทโธปกรณ์วิกฤต</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-tag">INTEL</div>
-                <h3>Intelligence Division</h3>
-                <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">เครือข่ายข่าวกรองทางยุทธวิธี</p>
-                <ul>
-                    <li>วิเคราะห์เจาะลึกฐานข้อมูลภัยคุกคาม</li>
-                    <li>เฝ้าติดตามความเคลื่อนไหวผ่านดาวเทียม</li>
-                    <li>สนับสนุนข้อมูลเชิงรุกแก่หน่วยรบ</li>
-                </ul>
-            </div>
-        </div>
+    <header>
+        <div class="mainframe-status">▶ TERMINAL_LINKED // ACCESS: UNRESTRICTED // ENCRYPTION: AES-256</div>
+        <h1>WE DON'T WAIT FOR <span>WAR</span>. WE FINANCE IT.</h1>
+        <p>ATLAS Corporation คือองค์กรทหารรับจ้างเอกชนเดนตายข้ามชาติ คุมกำลังรบติดอาวุธหนัก ยานเกราะ แทรกซึม และบดขยี้เป้าหมายตามสัญญาจ้างสีดำ (Black Ops Contracts) ทั่วทุกมุมมืดของโลก</p>
+    </header>
 
-        <h1 class="page-title">TACTICAL UNITS <span>& SUPPORT</span> // หน่วยรบและแผนกสนับสนุน</h1>
-        <div class="grid-3">
-            <div class="card">
-                <h3>Security Operators</h3>
-                <ul>
-                    <li>ควบคุมพื้นที่และรักษาความสงบ</li>
-                    <li>ตรวจสอบบุคคลและคัดกรองพื้นที่เข้าออก</li>
+    <div class="critical-bar">WARNING: ACTIVE COMBAT ENGAGEMENT IN PROGRESS // DATA REFRESHING SYSTEM</div>
+
+    <main class="mainframe-container">
+        <section class="main-panel-group">
+            <div class="terminal-block">
+                <div class="block-title"><span>[01]</span> STRATEGIC DOCTRINE // หลักนิยมเดนตายรบไร้ขอบเขต</div>
+                <ul class="intel-list">
+                    <li>
+                        <h4>เด็ดขาด ไร้ความปรานี (Absolute Neutralization)</h4>
+                        <p>ไม่มีนโยบายเจรจาต่อรอง หากเป้าหมายถูกระบุว่าเป็นภัยคุกคามต่อผู้ว่าจ้าง คลังอาวุธและชุดรบภาคสนามจะทำการกวาดล้างทันที</p>
+                    </li>
+                    <li>
+                        <h4>อำนาจเหนือกฎหมายสากล (Extralegal Operations)</h4>
+                        <p>กองกำลังรบพิเศษของเราทำงานในพื้นที่ปิดล้อมสีแดง ซึ่งกฎหมายสากลและสนธิสัญญาเจนีวาเข้าไม่ถึง</p>
+                    </li>
                 </ul>
             </div>
-            <div class="card">
-                <h3>Tactical Response Unit</h3>
-                <ul>
-                    <li>ระงับเหตุและเผชิญหน้าภัยฉุกเฉิน</li>
-                    <li>ปฏิบัติการชิงตัวประกัน/ควบคุมสถานการณ์วิกฤต</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Special Operations Group</h3>
-                <ul>
-                    <li>ลาดตระเวนแทรกซึมพิเศษหลังแนวข้าศึก</li>
-                    <li>ทำภารกิจลับที่มีความเสี่ยงต่อชีวิตระดับสูงสุด</li>
-                </ul>
-            </div>
-        </div>
 
-        <h1 class="page-title">ATLAS <span>TRAINING SYSTEM</span> // ระบบการฝึกฝนระดับสูง</h1>
-        
-        <div class="training-row">
-            <div class="level-badge">LV1</div>
-            <div>
-                <h3 style="color: #fff; margin-bottom: 5px;">Basic Security Training</h3>
-                <p style="color: var(--text-muted); font-size: 14px;">หลักสูตรพื้นฐานสำหรับเจ้าหน้าที่ประจำการ: มุ่งเน้นระบบการใช้อุปกรณ์สื่อสารเข้ารหัสทางทหาร, การปฐมพยาบาลกู้ชีพในสนามรบ (Tactical Combat Casualty Care), และวิทยาการรักษาความปลอดภัยทางยุทธวิธีขั้นต้น</p>
+            <div class="terminal-block">
+                <div class="block-title"><span>[02]</span> ACTIVE BLACK CONTRACTS // บันทึกงบประมาณสัญญาว่าจ้างสีดำ</div>
+                <table class="budget-table">
+                    <thead>
+                        <tr><th>CONTRACT ID</th><th>TARGET REGION</th><th>BUDGET</th><th>STATUS</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="color:var(--alert-orange);">#OP-BLOOD-RAIN</td><td>Sub-Saharan Borders</td><td style="color:var(--terminal-green); font-weight:bold;">$450,000,000</td><td>IN PROGRESS</td></tr>
+                        <tr><td style="color:var(--alert-orange);">#OP-CYBER-CRUSH</td><td>Eastern Bloc Nodes</td><td style="color:var(--terminal-green); font-weight:bold;">$120,000,000</td><td style="color:var(--terminal-green);">SUCCESS</td></tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
+        </section>
 
-        <div class="training-row">
-            <div class="level-badge">LV2</div>
-            <div>
-                <h3 style="color: #fff; margin-bottom: 5px;">Advanced Tactical Training</h3>
-                <p style="color: var(--text-muted); font-size: 14px;">หลักสูตรยุทธวิธีขั้นสูง: ฝึกซ้อมการเคลื่อนที่เป็นทีม (Squad Maneuvers), การบริหารจัดการสถานการณ์วิกฤตภายใต้แรงกดดันสูง, และ Close Quarters Battle (CQB) การปฏิบัติการรบในเขตเมือง</p>
+        <section class="side-panel-group">
+            <div class="terminal-block">
+                <div class="block-title"><span>[03]</span> LIVE OPERATIONAL FEED // รายงานสดสนามรบ</div>
+                <div class="live-feed-box">
+                    <div class="feed-line"><span class="loc">SEC_4</span>: ทีมไรเฟิลจู่โจม APSR-90 ล็อกเป้าหมาย... FIRE_OPENED</div>
+                    <div class="feed-line"><span class="loc">S_PACIFIC</span>: ยานเกราะ Vanguard-X เคลื่อนพลขึ้นฝั่งแทรกซึมเงียบเสร็จสิ้น</div>
+                </div>
             </div>
-        </div>
 
-        <div class="training-row">
-            <div class="level-badge">LV3</div>
-            <div>
-                <h3 style="color: #fff; margin-bottom: 5px; color: var(--primary-red);">Special Operations Certification</h3>
-                <p style="color: var(--text-muted); font-size: 14px;">การรับรองขั้นสูงสุดของ ATLAS: สำหรับหน่วยปฏิบัติการพิเศษ ครอบคลุมการรวบรวมข่าวกรองภาคสนามขั้นสูง, การลาดตระเวนระยะไกล, และวิทยาการเอาตัวรอดในสภาวะแวดล้อมที่โหดร้าย (SERE Training)</p>
+            <div class="terminal-block">
+                <div class="block-title"><span>[04]</span> GLOBAL FORCE POWER // กำลังรบ</div>
+                <div class="grid-3">
+                    <div class="stat-node"><div class="value red">85,400</div><div class="label">OPERATORS</div></div>
+                    <div class="stat-node"><div class="value">1,250</div><div class="label">ARMORS</div></div>
+                    <div class="stat-node"><div class="value" style="color:var(--terminal-green);">94.8%</div><div class="label">WIN RATE</div></div>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer>
-        <p>© 2026 ATLAS CORPORATION. INTERNAL USE ONLY // DISPATCH CENTER NETWORK</p>
+        <p>© 2026 ATLAS CORPORATION. HIGH-THREAT MERCENARY NETWORK // MAIN INTERACTIVE OVERVIEW TERMINAL</p>
     </footer>
 
 </body>
