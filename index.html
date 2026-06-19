@@ -1,5 +1,25 @@
-<form onsubmit="window.location.href='index.html'; return false;">
-    <input type="text" class="form-input" placeholder="ENTER OPERATOR ID" value="ATLAS_OPERATOR_01">
-    <input type="password" class="form-input" placeholder="ENTER CLEARANCE CODE">
-    <button type="submit" class="btn-login">AUTHENTICATE ACCESS</button>
-</form>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ATLAS PMC // GLOBAL STRATEGIC WARFARE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --bg-black: #030304; --primary-red: #990000; --text-light: #e2e8f0; }
+        body { background-color: var(--bg-black); color: var(--text-light); font-family: 'Courier New', monospace; }
+        .nav-link { color: #64748b; padding: 10px; transition: 0.3s; }
+        .nav-link:hover { color: #fff; border-bottom: 2px solid var(--primary-red); }
+    </style>
+</head>
+<body>
+    <nav class="flex gap-6 p-6 border-b border-gray-800">
+        <a href="index.html" class="text-red-600 font-bold">DASHBOARD</a>
+        <a href="divisions.html" class="nav-link">DIVISIONS</a>
+        <a href="tech.html" class="nav-link">R&D TECH</a>
+        <a href="careers.html" class="nav-link">CAREERS</a>
+    </nav>
+    <main class="p-10">
+        <h1 class="text-3xl text-red-600 font-bold">GLOBAL OPERATIONS COMMAND</h1>
+        </main>
+</body>
+</html>
