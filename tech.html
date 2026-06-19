@@ -2,109 +2,17 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATLAS Armaments Database</title>
-    <style>
-        :root {
-            --bg-dark: #060608;
-            --bg-card: #0f1015;
-            --primary-red: #da0012;
-            --text-light: #ffffff;
-            --text-muted: #9fa6b5;
-            --border-color: #222531;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
-        body { background-color: var(--bg-dark); color: var(--text-light); }
-        
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: #060608; border-bottom: 2px solid var(--primary-red); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 24px; font-weight: 900; letter-spacing: 4px; }
-        .logo span { color: var(--primary-red); }
-        .nav-links { display: flex; list-style: none; }
-        .nav-links li { margin-left: 20px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; padding: 5px 10px; }
-        .nav-links a.active { color: #fff; background: var(--primary-red); }
-
-        .container { padding: 50px 8%; max-width: 1200px; margin: 0 auto; }
-        .sim-tag { color: var(--primary-red); font-size: 12px; text-transform: uppercase; margin-bottom: 10px; display: block; border: 1px solid var(--primary-red); padding: 2px 8px; width: fit-content; }
-        .page-header { margin-bottom: 40px; border-bottom: 1px dashed var(--border-color); padding-bottom: 20px; }
-        
-        .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .tech-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; }
-        .tech-card h2 { color: var(--primary-red); margin-bottom: 10px; font-size: 18px; }
-        .tech-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
-        .spec-table { width: 100%; font-size: 12px; border-collapse: collapse; }
-        .spec-table td { padding: 5px; border-bottom: 1px solid #1a1c23; }
-        .spec-table td:first-child { color: #fff; font-weight: bold; width: 40%; }
-        
-        footer { padding: 40px; text-align: center; color: var(--text-muted); font-size: 11px; }
-    </style>
+    <title>ATLAS // TECHNOLOGY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-
-    <nav>
-        <div class="logo">ATLAS<span>//PMSC</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">01 // LOGIN</a></li>
-            <li><a href="overview.html">02 // OVERVIEW</a></li>
-            <li><a href="divisions.html">03 // DIVISIONS</a></li>
-            <li><a href="tech.html" class="active">04 // ARMAMENTS</a></li>
-            <li><a href="careers.html">05 // RECRUITMENT</a></li>
-        </ul>
+<body class="bg-[#060608] text-white">
+    <nav class="flex gap-6 p-6 border-b border-gray-800">
+        <a href="index.html" class="nav-link">DASHBOARD</a>
+        <a href="divisions.html" class="nav-link">DIVISIONS</a>
+        <a href="tech.html" class="text-red-600 font-bold">R&D TECH</a>
+        <a href="careers.html" class="nav-link">CAREERS</a>
     </nav>
-
-    <main class="container">
-        <span class="sim-tag">STATUS: [SIMULATION / ข้อมูลจำลอง]</span>
-        <div class="page-header">
-            <h1>ARMAMENTS & TECH // คลังยุทโธปกรณ์</h1>
-        </div>
-
-        <div class="tech-grid">
-            <!-- อาวุธ 1 -->
-            <div class="tech-card">
-                <h2>APSR-90 Smart Assault Rifle</h2>
-                <p>ไรเฟิลจู่โจมหลัก เชื่อมต่อ HUD วิถีกระสุนแม่นยำสูง</p>
-                <table class="spec-table">
-                    <tr><td>CALIBER</td><td>6.8mm AP</td></tr>
-                    <tr><td>CAPACITY</td><td>45 Rounds</td></tr>
-                    <tr><td>EFFECTIVE RANGE</td><td>800m</td></tr>
-                </table>
-            </div>
-            <!-- อาวุธ 2 -->
-            <div class="tech-card">
-                <h2>Vanguard-X Heavy Armor</h2>
-                <p>ชุดเกราะเหล็กกล้าผสมเส้นใยคาร์บอน ทนแรงปะทะสูง</p>
-                <table class="spec-table">
-                    <tr><td>MATERIAL</td><td>Titanium-Alloy</td></tr>
-                    <tr><td>WEIGHT</td><td>15kg</td></tr>
-                    <tr><td>PROTECTION</td><td>Level IV Body Armor</td></tr>
-                </table>
-            </div>
-            <!-- อาวุธ 3 -->
-            <div class="tech-card">
-                <h2>Ghost-Drone Type B</h2>
-                <p>โดรนสอดแนมขนาดเล็ก ปฏิบัติการเงียบสนิท</p>
-                <table class="spec-table">
-                    <tr><td>FLIGHT TIME</td><td>120 Minutes</td></tr>
-                    <tr><td>STEALTH</td><td>Ultra-Silent</td></tr>
-                    <tr><td>SENSOR</td><td>Thermal/Night Vision</td></tr>
-                </table>
-            </div>
-            <!-- อาวุธ 4 -->
-            <div class="tech-card">
-                <h2>C-9 Explosive Charges</h2>
-                <p>ระเบิดแรงสูงสำหรับทำลายโครงสร้างอาคารและประตูนิรภัย</p>
-                <table class="spec-table">
-                    <tr><td>BLAST RADIUS</td><td>15m</td></tr>
-                    <tr><td>REMOTE</td><td>Encrypted Signal</td></tr>
-                    <tr><td>STABILITY</td><td>High</td></tr>
-                </table>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>ATLAS CORPORATION // SECURE DEFENSE SYSTEMS // TERMINAL 04_TECH</p>
-    </footer>
-
+    <main class="p-10">
+        </main>
 </body>
 </html>
