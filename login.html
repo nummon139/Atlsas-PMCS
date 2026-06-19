@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ATLAS Secure Login</title>
+    <style>
+        body { background: #050507; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: monospace; }
+        .login-box { border: 1px solid #da0012; padding: 40px; width: 400px; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h1 class="text-red-600">ATLAS SECURE MAINFRAME</h1>
+        <input type="password" id="pass" placeholder="OPERATOR ID" style="width:100%; background:#111; padding:10px; margin:20px 0; border:1px solid #333;">
+        <button onclick="if(document.getElementById('pass').value=='ATLAS2026') window.location.href='index.html'; else alert('ACCESS DENIED');" style="width:100%; padding:10px; background:#da0012; color:white; cursor:pointer;">AUTHENTICATE</button>
+    </div>
+</body>
+</html>
