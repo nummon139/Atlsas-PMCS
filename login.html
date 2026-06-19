@@ -1,10 +1,35 @@
-<nav>
-    <div class="logo">ATLAS<span>//RAW_WARFARE</span></div>
-    <ul class="nav-links">
-        <li><a href="index.html" class="active">01 // DASHBOARD</a></li>
-        <li><a href="divisions.html">02 // DIVISIONS</a></li>
-        <li><a href="tech.html">03 // ARMAMENTS</a></li>
-        <li><a href="careers.html">04 // RECRUITMENT</a></li>
-        <li><a href="login.html" style="color:var(--blood-red);">05 // LOGOUT</a></li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATLAS PMC // GLOBAL STRATEGIC WARFARE</title>
+    <style>
+        :root { --bg-black: #030304; --blood-red: #990000; --text-light: #e2e8f0; --text-muted: #64748b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
+        body { background-color: var(--bg-black); color: var(--text-light); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(3, 3, 4, 0.95); border-bottom: 2px solid var(--blood-red); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .logo { font-size: 22px; font-weight: 900; color: #fff; }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; padding: 5px 10px; }
+        .nav-links a.active { color: #fff; background: var(--blood-red); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">ATLAS<span>//SYSTEM_ACTIVE</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">01 // DASHBOARD</a></li>
+            <li><a href="overview.html">02 // OVERVIEW</a></li>
+            <li><a href="divisions.html">03 // DIVISIONS</a></li>
+            <li><a href="tech.html">04 // ARMAMENTS</a></li>
+            <li><a href="careers.html">05 // RECRUITMENT</a></li>
+        </ul>
+    </nav>
+    <main style="margin-top: 100px; padding: 50px;">
+        <h1>ACCESS GRANTED // WELCOME OPERATOR</h1>
+        <p>ยินดีต้อนรับสู่เครือข่าย ATLAS Corporation ข้อมูลทั้งหมดพร้อมแสดงผล</p>
+    </main>
+</body>
+</html>
