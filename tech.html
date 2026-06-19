@@ -3,45 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATLAS Technology & Comprehensive Defense Systems</title>
+    <title>ATLAS Armaments Database</title>
     <style>
         :root {
             --bg-dark: #060608;
             --bg-card: #0f1015;
-            --bg-panel: #14161d;
             --primary-red: #da0012;
             --text-light: #ffffff;
             --text-muted: #9fa6b5;
             --border-color: #222531;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace, 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
-
-        /* 🔒 FIXED NAVBAR SETUP */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: rgba(6, 6, 8, 0.98); border-bottom: 2px solid var(--primary-red); position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(8px); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
+        body { background-color: var(--bg-dark); color: var(--text-light); }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: #060608; border-bottom: 2px solid var(--primary-red); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 24px; font-weight: 900; letter-spacing: 4px; }
         .logo span { color: var(--primary-red); }
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 20px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; padding: 5px 10px; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--primary-red); box-shadow: 0 0 10px rgba(218, 0, 18, 0.5); }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; padding: 5px 10px; }
+        .nav-links a.active { color: #fff; background: var(--primary-red); }
 
-        .container { padding: 140px 8% 60px 8%; max-width: 1600px; margin: 0 auto; }
-        .page-header { text-align: center; margin-bottom: 60px; border-bottom: 1px dashed var(--border-color); padding-bottom: 30px; }
-        .page-header h1 { font-size: 42px; }
-        .page-header h1 span { color: var(--primary-red); }
-
-        .tech-block { display: flex; gap: 50px; margin-bottom: 60px; align-items: center; background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 30px; }
-        .tech-info { flex: 1; }
-        .tech-info h2 { font-size: 24px; color: #fff; margin-bottom: 15px; }
-        .tech-info h2 span { color: var(--primary-red); font-size: 12px; }
-        .tech-info p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
-
-        .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        .spec-table td { padding: 8px 12px; border: 1px solid var(--border-color); }
-        .spec-table td:first-child { color: var(--primary-red); font-weight: bold; width: 35%; }
-
-        footer { background: #030304; padding: 30px 8%; border-top: 2px solid var(--border-color); text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 60px; }
+        .container { padding: 50px 8%; max-width: 1200px; margin: 0 auto; }
+        .sim-tag { color: var(--primary-red); font-size: 12px; text-transform: uppercase; margin-bottom: 10px; display: block; border: 1px solid var(--primary-red); padding: 2px 8px; width: fit-content; }
+        .page-header { margin-bottom: 40px; border-bottom: 1px dashed var(--border-color); padding-bottom: 20px; }
+        
+        .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .tech-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 20px; }
+        .tech-card h2 { color: var(--primary-red); margin-bottom: 10px; font-size: 18px; }
+        .tech-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+        .spec-table { width: 100%; font-size: 12px; border-collapse: collapse; }
+        .spec-table td { padding: 5px; border-bottom: 1px solid #1a1c23; }
+        .spec-table td:first-child { color: #fff; font-weight: bold; width: 40%; }
+        
+        footer { padding: 40px; text-align: center; color: var(--text-muted); font-size: 11px; }
     </style>
 </head>
 <body>
@@ -58,24 +53,57 @@
     </nav>
 
     <main class="container">
+        <span class="sim-tag">STATUS: [SIMULATION / ข้อมูลจำลอง]</span>
         <div class="page-header">
-            <h1>ATLAS <span>ARMAMENTS & TECH</span> // ยุทโธปกรณ์ระดับสูง</h1>
+            <h1>ARMAMENTS & TECH // คลังยุทโธปกรณ์</h1>
         </div>
 
-        <div class="tech-block">
-            <div class="tech-info">
-                <h2>APSR-90 Smart Assault Rifle <span>WEAPON DIVISION</span></h2>
-                <p>ปืนไรเฟิลจู่โจมระบบอิเล็กทรอนิกส์เต็มรูปแบบ ลิงก์ข้อมูลวิถีกระสุน ตัวแปรลม และอุณหภูมิ เข้ากับหน้าจอศูนย์เล็ง HUD ในหมวกเหล็กของเจ้าหน้าที่โดยตรง</p>
+        <div class="tech-grid">
+            <!-- อาวุธ 1 -->
+            <div class="tech-card">
+                <h2>APSR-90 Smart Assault Rifle</h2>
+                <p>ไรเฟิลจู่โจมหลัก เชื่อมต่อ HUD วิถีกระสุนแม่นยำสูง</p>
                 <table class="spec-table">
-                    <tr><td>CALIBER (ขนาดกระสุน)</td><td>6.8mm High-Velocity AP (เคลือบสารเจาะเกราะความเร็วสูง)</td></tr>
-                    <tr><td>FIRE RATE (อัตราการยิง)</td><td>850 Rounds / Minute</td></tr>
+                    <tr><td>CALIBER</td><td>6.8mm AP</td></tr>
+                    <tr><td>CAPACITY</td><td>45 Rounds</td></tr>
+                    <tr><td>EFFECTIVE RANGE</td><td>800m</td></tr>
+                </table>
+            </div>
+            <!-- อาวุธ 2 -->
+            <div class="tech-card">
+                <h2>Vanguard-X Heavy Armor</h2>
+                <p>ชุดเกราะเหล็กกล้าผสมเส้นใยคาร์บอน ทนแรงปะทะสูง</p>
+                <table class="spec-table">
+                    <tr><td>MATERIAL</td><td>Titanium-Alloy</td></tr>
+                    <tr><td>WEIGHT</td><td>15kg</td></tr>
+                    <tr><td>PROTECTION</td><td>Level IV Body Armor</td></tr>
+                </table>
+            </div>
+            <!-- อาวุธ 3 -->
+            <div class="tech-card">
+                <h2>Ghost-Drone Type B</h2>
+                <p>โดรนสอดแนมขนาดเล็ก ปฏิบัติการเงียบสนิท</p>
+                <table class="spec-table">
+                    <tr><td>FLIGHT TIME</td><td>120 Minutes</td></tr>
+                    <tr><td>STEALTH</td><td>Ultra-Silent</td></tr>
+                    <tr><td>SENSOR</td><td>Thermal/Night Vision</td></tr>
+                </table>
+            </div>
+            <!-- อาวุธ 4 -->
+            <div class="tech-card">
+                <h2>C-9 Explosive Charges</h2>
+                <p>ระเบิดแรงสูงสำหรับทำลายโครงสร้างอาคารและประตูนิรภัย</p>
+                <table class="spec-table">
+                    <tr><td>BLAST RADIUS</td><td>15m</td></tr>
+                    <tr><td>REMOTE</td><td>Encrypted Signal</td></tr>
+                    <tr><td>STABILITY</td><td>High</td></tr>
                 </table>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>© 2026 ATLAS CORPORATION. HIGH-SECURITY SECURE SYSTEM // TERMINAL 04_TECH</p>
+        <p>ATLAS CORPORATION // SECURE DEFENSE SYSTEMS // TERMINAL 04_TECH</p>
     </footer>
 
 </body>
