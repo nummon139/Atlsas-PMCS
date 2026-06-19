@@ -3,289 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATLAS PMC // GLOBAL STRATEGIC WARFARE INTERACTION</title>
+    <title>ATLAS PMSC // SECURE LOGIN PORTAL</title>
     <style>
         :root {
-            --bg-black: #030304;
-            --bg-dark-gray: #0b0c10;
-            --bg-panel: #111217;
-            --terminal-green: #00ff66;
-            --blood-red: #990000;
-            --alert-orange: #ff5500;
-            --text-light: #e2e8f0;
-            --text-muted: #64748b;
-            --border-heavy: #1e293b;
-            --grid-line: rgba(153, 0, 0, 0.04);
+            --bg-black: #050508;
+            --primary-red: #da0012;
+            --text-light: #ffffff;
+            --text-muted: #555566;
+            --border-color: #22222a;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace; }
-        
-        body { 
-            background-color: var(--bg-black); 
-            color: var(--text-light); 
-            line-height: 1.5;
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-light);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
             position: relative;
-            overflow-x: hidden;
         }
-
-        /* เอฟเฟกต์ตารางกริดและเส้นเลเซอร์สแกนแบบศูนย์บัญชาการสงคราม */
         body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 25px 25px; z-index: -1; pointer-events: none;
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(218, 0, 18, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(218, 0, 18, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px; z-index: 1;
         }
-        
-        body::after {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 4px;
-            background: rgba(218, 0, 18, 0.1);
-            animation: scanline 6s linear infinite; z-index: 9999; pointer-events: none;
+        .login-panel {
+            background: #0d0d13;
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--primary-red);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            z-index: 10;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
         }
-        @keyframes scanline { 0% { top: -10px; } 100% { top: 100%; } }
-
-        /* 🔒 คงแถบเมนูเดิมไว้ไม่ให้พัง แต่ปรับสีให้ดุดันเข้ากับธีมใหม่ */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: rgba(3, 3, 4, 0.95); border-bottom: 2px solid var(--blood-red); position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(5px); }
-        .logo { font-size: 22px; font-weight: 900; letter-spacing: 3px; color: #fff; text-shadow: 0 0 10px rgba(153,0,0,0.6); }
-        .logo span { color: var(--blood-red); animation: alertBlink 1.5s infinite; }
-        .nav-links { display: flex; list-style: none; }
-        .nav-links li { margin-left: 20px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; letter-spacing: 1px; transition: 0.3s; padding: 5px 10px; border: 1px solid transparent; }
-        .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--blood-red); border-color: var(--blood-red); box-shadow: 0 0 10px rgba(153, 0, 0, 0.5); }
-
-        /* 🪖 HEADER HERO ZONE - สไตล์หน้าจอมอนิเตอร์ดาวเทียมทางทหาร */
-        header { 
-            height: 65vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            padding: 0 5%; 
-            margin-top: 75px; 
-            border-bottom: 3px double var(--blood-red); 
-            background: linear-gradient(to right, #030304 35%, rgba(153,0,0,0.15)), url('https://images.unsplash.com/photo-1547483238-f400e65ccd56?q=80&w=2070') no-repeat center center/cover;
-            background-blend-mode: multiply;
+        .logo { font-size: 28px; font-weight: 900; letter-spacing: 5px; text-align: center; margin-bottom: 30px; }
+        .logo span { color: var(--primary-red); }
+        .form-group { margin-bottom: 20px; }
+        .form-input {
+            width: 100%; padding: 12px; background: #050508; border: 1px solid var(--border-color);
+            color: #fff; font-family: monospace; font-size: 14px;
         }
-        .warning-strip { background: repeating-linear-gradient(45deg, #ffe600, #ffe600 10px, #000 10px, #000 20px); height: 10px; width: 100%; position: absolute; left: 0; top: 73px; }
-        .mainframe-status { font-size: 12px; color: var(--terminal-green); margin-bottom: 10px; letter-spacing: 2px; }
-        header h1 { font-size: 55px; font-weight: 900; letter-spacing: -1px; line-height: 1.0; max-width: 900px; margin-bottom: 15px; color: #fff; text-transform: uppercase; }
-        header h1 span { color: var(--blood-red); }
-        header p { font-size: 16px; color: #94a3b8; max-width: 750px; background: rgba(0,0,0,0.7); padding: 15px; border-left: 3px solid var(--blood-red); }
-
-        /* MAIN SYSTEM LAYOUT */
-        .mainframe-container { padding: 40px 5%; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        
-        .main-panel-group { display: flex; flex-direction: column; gap: 35px; }
-        .side-panel-group { display: flex; flex-direction: column; gap: 35px; }
-
-        .terminal-block { background-color: var(--bg-panel); border: 1px solid var(--border-heavy); padding: 30px; position: relative; box-shadow: inset 0 0 20px rgba(0,0,0,0.8); }
-        .terminal-block::before { content: "SYS_CONFIDENTIAL // NO_LEAK"; position: absolute; top: -10px; right: 20px; background: #220508; border: 1px solid var(--blood-red); padding: 1px 8px; color: var(--blood-red); font-size: 10px; font-weight: bold; }
-        
-        .block-title { font-size: 22px; font-weight: bold; color: #fff; margin-bottom: 20px; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--blood-red); padding-bottom: 8px; }
-        .block-title span { color: var(--blood-red); }
-
-        /* DATA TABLES & LISTS */
-        .intel-list { list-style: none; }
-        .intel-list li { background: #08090d; border: 1px solid #1a1c23; padding: 15px; margin-bottom: 12px; border-left: 4px solid var(--blood-red); }
-        .intel-list li h4 { color: var(--alert-orange); font-size: 15px; margin-bottom: 5px; text-transform: uppercase; }
-        .intel-list li p { color: #94a3b8; font-size: 13px; }
-
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px; }
-        .stat-node { background: #07080a; border: 1px solid var(--border-heavy); padding: 15px; text-align: center; }
-        .stat-node .value { font-size: 24px; font-weight: bold; color: #fff; }
-        .stat-node .value.red { color: var(--blood-red); }
-        .stat-node .label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-top: 5px; }
-
-        /* 🔴 LIVE COMBAT OPERATIONS FEED - ฟีดจำลองสถานการณ์สดรบดิบๆ */
-        .live-feed-box { background: #040507; border: 1px dashed var(--blood-red); padding: 15px; max-height: 320px; overflow-y: auto; font-size: 12px; color: var(--terminal-green); }
-        .feed-line { margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px; }
-        .feed-line .time { color: var(--text-muted); }
-        .feed-line .loc { color: var(--alert-orange); font-weight: bold; }
-        .feed-line .status { color: #fff; background: var(--blood-red); padding: 0 4px; font-size: 10px; margin-left: 5px; }
-
-        /* BLACK OPS CONTRACT BUDGETS TABLE */
-        .budget-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 12px; }
-        .budget-table th { background: #1c0507; color: var(--blood-red); text-align: left; padding: 10px; border: 1px solid var(--border-heavy); }
-        .budget-table td { padding: 10px; border: 1px solid var(--border-heavy); background: #08090d; }
-        .budget-table tr:hover td { background: #12141a; }
-
-        /* FOOTER ALERT */
-        @keyframes alertBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-        .critical-bar { background: var(--blood-red); color: #fff; text-align: center; padding: 8px; font-size: 11px; font-weight: bold; letter-spacing: 3px; animation: alertBlink 2s infinite; }
-
-        footer { background: #020203; padding: 30px 5%; border-top: 1px solid var(--border-heavy); text-align: center; color: var(--text-muted); font-size: 11px; }
+        .form-input:focus { border-color: var(--primary-red); outline: none; }
+        .btn-login {
+            background: var(--primary-red); color: #fff; width: 100%; padding: 14px;
+            font-weight: bold; border: none; cursor: pointer; letter-spacing: 2px; font-size: 14px;
+            transition: 0.3s;
+        }
+        .btn-login:hover { background: #b5000f; box-shadow: 0 0 15px rgba(218, 0, 18, 0.4); }
+        .footer-text { text-align: center; color: var(--text-muted); font-size: 10px; margin-top: 25px; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
-    <div class="warning-strip"></div>
-
-    <!-- 🔒 แถบเมนูดั้งเดิม ลิงก์ไปหน้า 1, 2, 3, 4, 5 ได้อย่างแม่นยำครบถ้วน ไม่พังแน่นอน -->
-    <nav>
-        <div class="logo">ATLAS<span>//RAW_WARFARE</span></div>
-        <ul class="nav-links">
-            <li><a href="login.html">01 // LOGIN</a></li>
-            <li><a href="index.html" class="active">02 // OVERVIEW</a></li>
-            <li><a href="divisions.html">03 // DIVISIONS</a></li>
-            <li><a href="tech.html">04 // ARMAMENTS</a></li>
-            <li><a href="careers.html">05 // RECRUITMENT</a></li>
-        </ul>
-    </nav>
-
-    <!-- 🪖 HEAD MAINFRAME -->
-    <header>
-        <div class="mainframe-status">▶ TERMINAL_LINKED // ACCESS: UNRESTRICTED // ENCRYPTION: AES-256</div>
-        <h1>WE DON'T WAIT FOR <span>WAR</span>. WE FINANCE IT.</h1>
-        <p>ATLAS Corporation ปฏิเสธการทำงานภายใต้ระบบจริยธรรมที่เชื่องช้า เราคือองค์กรทหารรับจ้างเอกชนเดนตายข้ามชาติ คุมกำลังรบติดอาวุธหนัก ยานเกราะ แทรกซึม ตัดวงจรวินาศกรรม และบดขยี้เป้าหมายตามสัญญาจ้างสีดำ (Black Ops Contracts) ทั่วทุกมุมมืดของโลก โดยไม่ขึ้นตรงต่อรัฐบาลใดๆ</p>
-    </header>
-
-    <div class="critical-bar">WARNING: WE ARE CURRENTLY ENGAGED IN ACTIVE COMBAT OPERATIONS IN 4 SECTORS DATA REFRESH AUTONOMOUSLY</div>
-
-    <!-- MAIN INTERACTIVE SYSTEM AREA -->
-    <main class="mainframe-container">
+    <div class="login-panel">
+        <div class="logo">ATLAS<span>//PMSC</span></div>
         
-        <!-- LEFT SIDE: HEAVY INTEL & DOCTRINES -->
-        <section class="main-panel-group">
-            
-            <div class="terminal-block">
-                <div class="block-title"><span>[01]</span> STRATEGIC DOCTRINE // หลักนิยมเดนตายรบไร้ขอบเขต</div>
-                <p style="font-size: 14px; color: #cbd5e1; margin-bottom: 20px;">องค์กรขับเคลื่อนด้วยกำลังพลทหารผ่านศึกนอกแถว และวิทยาการอาวุธระดับโหดเหี้ยม ทุกปฏิบัติการของเรามุ่งเน้นผลลัพธ์การทำลายล้างสูงสุดในเวลาที่สั้นที่สุด:</p>
-                
-                <ul class="intel-list">
-                    <li>
-                        <h4>เด็ดขาด ไร้ความปรานี (Absolute Neutralization)</h4>
-                        <p>ไม่มีนโยบายเจรจาต่อรอง หรือจับกุมตัวประกันในพื้นที่สีแดง หากเป้าหมายถูกระบุว่าเป็นภัยคุกคามต่อผลประโยชน์ของพันธมิตรผู้ว่าจ้าง คลังอาวุธและชุดรบภาคสนามจะทำการกวาดล้างและถอนรากถอนโคนทันที</p>
-                    </li>
-                    <li>
-                        <h4>อำนาจเหนือกฎหมายสากล (Extralegal Operations)</h4>
-                        <p>กองกำลังรบพิเศษและฝูงบิน VTOL ของเราทำงานในพื้นที่ปิดและเขตสงครามปิดล้อม (Denial Areas) ซึ่งกฎหมายสากลและสนธิสัญญาเจนีวาเข้าไม่ถึง เราทำหน้าที่เป็นทั้งผู้พิพากษาและเพชฌฆาตในสมรภูมิ</p>
-                    </li>
-                    <li>
-                        <h4>ครอบครองยุทธศาสตร์แบบเบ็ดเสร็จ (Total Sector Control)</h4>
-                        <p>เมื่อเจ้าหน้าที่ทหารรับจ้างของ ATLAS เคลื่อนพลเข้าสู่พื้นที่เป้าหมาย ระบบเครือข่ายไซเบอร์จะทำการตัดสัญญาณสื่อสารสาธารณะ ตัดระบบไฟฟ้า และยึดครองช่องสัญญาณดาวเทียม เพื่อควบคุมการเข้าออกของสิ่งมีชีวิตทุกชนิดในเซกเตอร์</p>
-                    </li>
-                </ul>
+        <form onsubmit="window.location.href='overview.html'; return false;">
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="ENTER OPERATOR ID" value="ATLAS_OPERATOR_01" required>
             </div>
-
-            <div class="terminal-block">
-                <div class="block-title"><span>[02]</span> ACTIVE BLACK CONTRACTS // บันทึกงบประมาณสัญญาว่าจ้างสีดำ (SECRET)</div>
-                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">* ข้อมูลการทำธุรกรรมและการจัดซื้ออาวุธผ่านบัญชีออฟโชร์ที่ไม่สามารถตรวจสอบเส้นทางการเงินได้:</p>
-                
-                <table class="budget-table">
-                    <thead>
-                        <tr>
-                            <th>รหัสสัญญา (CONTRACT ID)</th>
-                            <th>พื้นที่เป้าหมาย (TARGET REGION)</th>
-                            <th>ประเภทภารกิจ (OPERATION TYPE)</th>
-                            <th>งบประมาณ (BUDGET)</th>
-                            <th>สถานะ (STATUS)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="color:var(--alert-orange);">#OP-BLOOD-RAIN</td>
-                            <td>Sub-Saharan Borders</td>
-                            <td>ยึดครองเหมืองแร่ทังสเตนและกวาดล้างกบฏ</td>
-                            <td style="color:var(--terminal-green); font-weight:bold;">$450,000,000</td>
-                            <td><span style="color:#ffe600;">IN PROGRESS</span></td>
-                        </tr>
-                        <tr>
-                            <td style="color:var(--alert-orange);">#OP-CYBER-CRUSH</td>
-                            <td>Eastern Bloc Nodes</td>
-                            <td>เจาะทำลายเซิร์ฟเวอร์ความมั่นคงและจารกรรมแผนผังอาวุธ</td>
-                            <td style="color:var(--terminal-green); font-weight:bold;">$120,000,000</td>
-                            <td style="color:var(--terminal-green);">SUCCESS</td>
-                        </tr>
-                        <tr>
-                            <td style="color:var(--alert-orange);">#OP-VIP-EVAC</td>
-                            <td>Middle East Sector 4</td>
-                            <td>ชิงตัวบอร์ดบริหารระดับสูงและถล่มค่ายปิดล้อม</td>
-                            <td style="color:var(--terminal-green); font-weight:bold;">$85,000,000</td>
-                            <td style="color:var(--terminal-green);">SUCCESS</td>
-                        </tr>
-                        <tr>
-                            <td style="color:var(--alert-orange);">#OP-GHOST-HUNT</td>
-                            <td>South China Sea Outpost</td>
-                            <td>ดำน้ำจู่โจมทำลายสถานีเรดาร์ไร้ระบุตัวตน</td>
-                            <td style="color:var(--terminal-green); font-weight:bold;">$310,000,000</td>
-                            <td style="color:var(--blood-red); font-weight:bold;">CRITICAL ENGAGED</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="form-group">
+                <input type="password" class="form-input" placeholder="ENTER SECURITY KEY" value="••••••••" required>
             </div>
+            <button type="submit" class="btn-login">BYPASS & ENTER MAIN SYSTEM</button>
+        </form>
 
-        </section>
-
-        <!-- RIGHT SIDE: LIVE FEED & HARDWARE STATUS MONITOR -->
-        <section class="side-panel-group">
-            
-            <div class="terminal-block">
-                <div class="block-title"><span>[03]</span> LIVE OPERATIONAL FEED // มอนิเตอร์สนามรบสด</div>
-                
-                <div class="live-feed-box">
-                    <div class="feed-line">
-                        <span class="time">[20:11:02]</span> <span class="loc">SEC_4</span>: ทีมไรเฟิลจู่โจม APSR-90 ล็อกเป้าหมายกลุ่มติดอาวุธ 14 ราย... <span class="status">FIRE_OPENED</span>
-                    </div>
-                    <div class="feed-line">
-                        <span class="time">[20:09:45]</span> <span class="loc">S_PACIFIC</span>: ยานเกราะ Vanguard-X เคลื่อนพลขึ้นฝั่งแทรกซึมเงียบเสร็จสิ้น ระบบ ADS พร้อมทำงาน
-                    </div>
-                    <div class="feed-line">
-                        <span class="time">[19:55:12]</span> <span class="loc">HQ_LINK</span>: บอร์ดบริหาร (Board of Directors) อนุมัติการใช้ปืนใหญ่ Railgun ถล่มป้อมปราการชายฝั่ง
-                    </div>
-                    <div class="feed-line">
-                        <span class="time">[19:40:22]</span> <span class="loc">CYBER_DIV</span>: ตรวจพบความพยายามเจาะระบบฐานข้อมูลกระจกนิรภัยกันกระสุน... <span class="status" style="background:#ff5500;">COUNTER_ATTACK_LAUNCHED</span>
-                    </div>
-                    <div class="feed-line">
-                        <span class="time">[19:12:00]</span> <span class="loc">AFRICA_Z</span>: ส่งหน่วยแพทย์สนามหุ้มเกราะเข้าลำเลียงกำลังพลบาดเจ็บ 2 นายกลับฐานทัพย่อย
-                    </div>
-                </div>
-                <p style="font-size: 11px; color: var(--text-muted); margin-top: 10px; text-align: center;">(ข้อมูลอัปเดตแบบเรียลไทม์ส่งตรงจากหมวกเหล็กทหารในสนามรบ)</p>
-            </div>
-
-            <div class="terminal-block">
-                <div class="block-title"><span>[04]</span> GLOBAL FORCE POWER // ขีดความสามารถกำลังรบ</div>
-                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">สรุปจำนวนทรัพยากรสงครามเดนตายที่พร้อมเคลื่อนพลถล่มเป้าหมายใน 15 นาที:</p>
-                
-                <div class="grid-3">
-                    <div class="stat-node">
-                        <div class="value red">85,400</div>
-                        <div class="label">ACTIVE OPERATORS</div>
-                    </div>
-                    <div class="stat-node">
-                        <div class="value">1,250</div>
-                        <div class="label">HEAVY ARMORS</div>
-                    </div>
-                    <div class="stat-node">
-                        <div class="value">410</div>
-                        <div class="label">TACTICAL UAVs</div>
-                    </div>
-                </div>
-
-                <div class="grid-3">
-                    <div class="stat-node">
-                        <div class="value red">DEFCON 2</div>
-                        <div class="label">ALERT LEVEL</div>
-                    </div>
-                    <div class="stat-node">
-                        <div class="value" style="color:var(--terminal-green);">94.8%</div>
-                        <div class="label">MISSION WIN RATE</div>
-                    </div>
-                    <div class="stat-node">
-                        <div class="value">18</div>
-                        <div class="label">GLOBAL BASES</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="terminal-block" style="border-left: 4px solid var(--alert-orange);">
-                <h3 style="font-size: 14px; color: var(--alert-orange); margin-bottom: 10px;">⚠️ สารจากผู้บัญชาการฝ่ายความมั่นคงภายใน (CSO)</h3>
-                <p style="font-size: 12px; color: #94a3b8; text-align: justify;">"ห้ามเจ้าหน้าที่คนใดกู้ข้อมูล แลกเปลี่ยน หรือส่งต่อพิมพ์เขียวระบบอาวุธนำวิถีและสูตรกระจกนาโนคอมโพสิตออกนอกเครือข่ายคอร์ปอเรตเด็ดขาด หากฝ่ายสืบสวนจารกรรม (Counterintelligence) ตรวจพบ บุคคลนั้นจะถูกจัดให้อยู่ในประเภทภัยคุกคามระดับสีแดง และจะถูกกำจัดทิ้งโดยทีมล่าสังหาร SOG ทันที"</p>
-            </div>
-
-        </section>
-
-    </main>
-
-    <footer>
-        <p>© 2026 ATLAS CORPORATION. HIGH-THREAT MERCENARY NETWORK // MAIN INTERACTIVE OVERVIEW TERMINAL [SECURE ACCESS ONLY]</p>
-    </footer>
+        <div class="footer-text">SECURE TERMINAL // UNRESOLVED IDENTITY WILL BE TERMINATED</div>
+    </div>
 
 </body>
 </html>
