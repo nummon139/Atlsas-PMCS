@@ -23,13 +23,14 @@
         }
         @keyframes einkMove { 0% { background-position: 0 0; } 100% { background-position: 30px 30px; } }
 
+        /* 🔒 แถบเมนูเชื่อมลิงก์เวอร์ชันเสถียร */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background-color: rgba(10, 10, 12, 0.95); border-bottom: 2px solid var(--primary-red); position: fixed; width: 100%; top: 0; z-index: 1000; }
         .logo { font-size: 24px; font-weight: 900; letter-spacing: 4px; }
         .logo span { color: var(--primary-red); }
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 20px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary-red); border-bottom: 2px solid var(--primary-red); padding-bottom: 5px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; padding: 5px 10px; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--primary-red); box-shadow: 0 0 10px rgba(218, 0, 18, 0.5); }
 
         .container { padding: 120px 8% 60px 8%; }
         .page-title { font-size: 36px; border-bottom: 2px dashed var(--border-color); padding-bottom: 20px; margin-bottom: 40px; }
