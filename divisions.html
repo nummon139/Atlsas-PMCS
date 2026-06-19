@@ -23,8 +23,8 @@
         }
         @keyframes einkMove { 0% { background-position: 0 0; } 100% { background-position: 30px 30px; } }
 
-        /* 🔒 แถบเมนูเชื่อมลิงก์เวอร์ชันเสถียร */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background-color: rgba(10, 10, 12, 0.95); border-bottom: 2px solid var(--primary-red); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        /* 🔒 FIXED NAVBAR SETUP */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: rgba(10, 10, 12, 0.95); border-bottom: 2px solid var(--primary-red); position: fixed; width: 100%; top: 0; z-index: 1000; }
         .logo { font-size: 24px; font-weight: 900; letter-spacing: 4px; }
         .logo span { color: var(--primary-red); }
         .nav-links { display: flex; list-style: none; }
@@ -37,7 +37,6 @@
         .page-title span { color: var(--primary-red); }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
         .card { background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 25px; position: relative; }
-        .card-tag { position: absolute; top: 15px; right: 25px; font-size: 11px; color: var(--primary-red); font-weight: bold; background: rgba(218,0,18,0.1); padding: 2px 8px; }
         .card h3 { font-size: 20px; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
         .card ul { list-style: none; padding-left: 5px; color: var(--text-muted); font-size: 14px; }
         .card ul li { margin-bottom: 8px; }
@@ -67,85 +66,37 @@
         
         <div class="grid-3">
             <div class="card">
-                <div class="card-tag">COMMAND</div>
                 <h3>Strategic Operations</h3>
                 <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">ศูนย์บัญชาการยุทธศาสตร์ส่วนกลาง</p>
                 <ul>
                     <li>วางแผนภารกิจความมั่นคงระดับสูง</li>
                     <li>บริหารและจัดสรรกำลังพลส่วนหน้า</li>
-                    <li>ประสานงานและเชื่อมต่อระหว่างหน่วยงาน</li>
                 </ul>
             </div>
             <div class="card">
-                <div class="card-tag">FIELD FORCE</div>
                 <h3>Military Services</h3>
                 <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">กองกำลังภาคสนามและต่อสู้ส่วนหน้า</p>
                 <ul>
                     <li>คุ้มกันบุคคลสำคัญ (VIP Protection)</li>
                     <li>ป้องกันสถาปัตยกรรมและสถานที่สำคัญ</li>
-                    <li>คุ้มกันขบวนลำเลียงและยุทโธปกรณ์วิกฤต</li>
                 </ul>
             </div>
             <div class="card">
-                <div class="card-tag">INTEL</div>
                 <h3>Intelligence Division</h3>
                 <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">เครือข่ายข่าวกรองทางยุทธวิธี</p>
                 <ul>
                     <li>วิเคราะห์เจาะลึกฐานข้อมูลภัยคุกคาม</li>
                     <li>เฝ้าติดตามความเคลื่อนไหวผ่านดาวเทียม</li>
-                    <li>สนับสนุนข้อมูลเชิงรุกแก่หน่วยรบ</li>
                 </ul>
             </div>
         </div>
 
-        <h1 class="page-title">TACTICAL UNITS <span>& SUPPORT</span> // หน่วยรบและแผนกสนับสนุน</h1>
-        <div class="grid-3">
-            <div class="card">
-                <h3>Security Operators</h3>
-                <ul>
-                    <li>ควบคุมพื้นที่และรักษาความสงบ</li>
-                    <li>ตรวจสอบบุคคลและคัดกรองพื้นที่เข้าออก</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Tactical Response Unit</h3>
-                <ul>
-                    <li>ระงับเหตุและเผชิญหน้าภัยฉุกเฉิน</li>
-                    <li>ปฏิบัติการชิงตัวประกัน/ควบคุมสถานการณ์วิกฤต</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Special Operations Group</h3>
-                <ul>
-                    <li>ลาดตระเวนแทรกซึมพิเศษหลังแนวข้าศึก</li>
-                    <li>ทำภารกิจลับที่มีความเสี่ยงต่อชีวิตระดับสูงสุด</li>
-                </ul>
-            </div>
-        </div>
-
-        <h1 class="page-title">ATLAS <span>TRAINING SYSTEM</span> // ระบบการฝึกฝนระดับสูง</h1>
-        
+        <h1 class="page-title">ATLAS <span>TRAINING SYSTEM</span> // ระบบการฝึกฝน</h1>
         <div class="training-row">
             <div class="level-badge">LV1</div>
             <div>
                 <h3 style="color: #fff; margin-bottom: 5px;">Basic Security Training</h3>
-                <p style="color: var(--text-muted); font-size: 14px;">หลักสูตรพื้นฐานสำหรับเจ้าหน้าที่ประจำการ: มุ่งเน้นระบบการใช้อุปกรณ์สื่อสารเข้ารหัสทางทหาร, การปฐมพยาบาลกู้ชีพในสนามรบ (Tactical Combat Casualty Care), และวิทยาการรักษาความปลอดภัยทางยุทธวิธีขั้นต้น</p>
-            </div>
-        </div>
-
-        <div class="training-row">
-            <div class="level-badge">LV2</div>
-            <div>
-                <h3 style="color: #fff; margin-bottom: 5px;">Advanced Tactical Training</h3>
-                <p style="color: var(--text-muted); font-size: 14px;">หลักสูตรยุทธวิธีขั้นสูง: ฝึกซ้อมการเคลื่อนที่เป็นทีม (Squad Maneuvers), การบริหารจัดการสถานการณ์วิกฤตภายใต้แรงกดดันสูง, และ Close Quarters Battle (CQB) การปฏิบัติการรบในเขตเมือง</p>
-            </div>
-        </div>
-
-        <div class="training-row">
-            <div class="level-badge">LV3</div>
-            <div>
-                <h3 style="color: #fff; margin-bottom: 5px; color: var(--primary-red);">Special Operations Certification</h3>
-                <p style="color: var(--text-muted); font-size: 14px;">การรับรองขั้นสูงสุดของ ATLAS: สำหรับหน่วยปฏิบัติการพิเศษ ครอบคลุมการรวบรวมข่าวกรองภาคสนามขั้นสูง, การลาดตระเวนระยะไกล, และวิทยาการเอาตัวรอดในสภาวะแวดล้อมที่โหดร้าย (SERE Training)</p>
+                <p style="color: var(--text-muted); font-size: 14px;">หลักสูตรพื้นฐานสำหรับเจ้าหน้าที่ประจำการ: มุ่งเน้นระบบการใช้อุปกรณ์สื่อสารเข้ารหัสทางทหาร และการปฐมพยาบาลกู้ชีพในสนามรบ</p>
             </div>
         </div>
     </main>
