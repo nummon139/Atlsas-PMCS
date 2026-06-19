@@ -12,36 +12,29 @@
             --text-light: #ffffff;
             --text-muted: #a0a0aa;
             --border-color: #2a2a32;
-            --eink-grid: rgba(218, 0, 18, 0.02);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', Courier, monospace, 'Segoe UI', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: linear-gradient(var(--eink-grid) 1px, transparent 1px), linear-gradient(90deg, var(--eink-grid) 1px, transparent 1px);
-            background-size: 25px 25px; z-index: -1; animation: einkMove 12s linear infinite; pointer-events: none;
-        }
-        @keyframes einkMove { 0% { background-position: 0 0; } 100% { background-position: 25px 25px; } }
 
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background-color: rgba(10, 10, 12, 0.95); border-bottom: 2px solid var(--primary-red); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        /* 🔒 FIXED NAVBAR SETUP */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: rgba(10, 10, 12, 0.95); border-bottom: 2px solid var(--primary-red); position: fixed; width: 100%; top: 0; z-index: 1000; }
         .logo { font-size: 24px; font-weight: 900; letter-spacing: 4px; }
         .logo span { color: var(--primary-red); }
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 20px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary-red); border-bottom: 2px solid var(--primary-red); padding-bottom: 5px; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: bold; padding: 5px 10px; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--primary-red); box-shadow: 0 0 10px rgba(218, 0, 18, 0.5); }
 
         .container { padding: 140px 8% 60px 8%; max-width: 1200px; margin: 0 auto; }
-        .title { font-size: 36px; border-bottom: 2px dashed var(--border-color); padding-bottom: 15px; margin-bottom: 30px; text-transform: uppercase; }
+        .title { font-size: 36px; border-bottom: 2px dashed var(--border-color); padding-bottom: 15px; margin-bottom: 30px; }
         .title span { color: var(--primary-red); }
 
         .grid-2 { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; }
-        .panel { background: var(--bg-card); border: 1px solid var(--border-color); padding: 30px; position: relative; }
+        .panel { background: var(--bg-card); border: 1px solid var(--border-color); padding: 30px; }
         
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 13px; color: var(--primary-red); font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
+        .form-group label { display: block; font-size: 13px; color: var(--primary-red); font-weight: bold; margin-bottom: 5px; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: #060608; border: 1px solid var(--border-color); color: #fff; font-family: monospace; }
-        .form-input:focus { border-color: var(--primary-red); outline: none; }
         
         .btn-submit { background: var(--primary-red); color: #fff; width: 100%; padding: 15px; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
         .btn-submit:hover { background: #b5000f; }
@@ -57,8 +50,8 @@
     <nav>
         <div class="logo">ATLAS<span>//PMSC</span></div>
         <ul class="nav-links">
-            <li><a href="login.html">01 // LOGIN</a></li>
-            <li><a href="index.html">02 // OVERVIEW</a></li>
+            <li><a href="index.html">01 // LOGIN</a></li>
+            <li><a href="overview.html">02 // OVERVIEW</a></li>
             <li><a href="divisions.html">03 // DIVISIONS</a></li>
             <li><a href="tech.html">04 // ARMAMENTS</a></li>
             <li><a href="careers.html" class="active">05 // RECRUITMENT</a></li>
@@ -66,42 +59,33 @@
     </nav>
 
     <main class="container">
-        <h1 class="title">RECRUITMENT <span>COMMAND</span> // ร่วมขับเคลื่อนความมั่นคงโลก</h1>
+        <h1 class="title">RECRUITMENT <span>COMMAND</span> // ร่วมงานกับเรา</h1>
         
         <div class="grid-2">
             <div class="panel">
-                <h2 style="margin-bottom: 20px; text-transform: uppercase; font-size: 20px;">[ ใบสมัครประเมินศักยภาพเบื้องต้น ]</h2>
-                <form onsubmit="alert('ATLAS Recruitment Command: กำลังบันทึกข้อมูลและวิเคราะห์ประวัติการรบของคุณ...'); return false;">
+                <h2 style="margin-bottom: 20px; font-size: 20px;">[ ใบสมัครประเมินศักยภาพเบื้องต้น ]</h2>
+                <form onsubmit="alert('ATLAS Recruitment Command: บันทึกข้อมูลวิเคราะห์ประวัติเสร็จสิ้น...'); return false;">
                     <div class="form-group">
                         <label>ชื่อ-นามสกุล / CALLSIGN</label>
-                        <input type="text" placeholder="ระบุชื่อจริง หรือรหัสเรียกขานทางทหาร" required>
+                        <input type="text" placeholder="ระบุรหัสเรียกขานทางทหาร" required>
                     </div>
                     <div class="form-group">
-                        <label>สายงานหลักที่ต้องการบรรจุ (DEPARTMENT)</label>
+                        <label>สายงานหลักที่ต้องการบรรจุ</label>
                         <select required>
                             <option value="">-- เลือกฝ่ายงานยุทธศาสตร์ --</option>
-                            <option value="1">Military Services (กองกำลังภาคสนาม/รบพิเศษ)</option>
-                            <option value="2">Intelligence Division (วิเคราะห์ข่าวกรอง/สายข่าว)</option>
-                            <option value="3">Advanced Systems & AI (วิศวกร/เทคโนโลยี)</option>
-                            <option value="4">Cyber Defense & Digital Intelligence (ความมั่นคงไซเบอร์)</option>
-                            <option value="5">Combat Medical Service (แพทย์สนาม)</option>
+                            <option value="1">Military Services (กองกำลังภาคสนาม)</option>
+                            <option value="2">Intelligence Division (ฝ่ายข่าวกรอง)</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>ประวัติการฝึกซ้อมหรือประสบการณ์รบ (MILITARY RECORDS)</label>
-                        <textarea rows="5" placeholder="ระบุสังกัดเดิม ทหารผ่านศึก กองทัพรัฐบาล หรือใบรับรองการฝึกอาวุธปืน (ถ้ามี)"></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">ส่งข้อมูลเข้าสู่ระบบตรวจสอบของ ATLAS</button>
+                    <button type="submit" class="btn-submit">ส่งข้อมูลเข้าสู่ระบบตรวจสอบ</button>
                 </form>
             </div>
 
             <div class="panel" style="border-left: 3px solid var(--primary-red);">
                 <h2 style="margin-bottom: 15px; color: var(--primary-red); font-size: 18px;">CRITICAL REQUIREMENT</h2>
-                <p style="font-size: 13px; margin-bottom: 20px;">ATLAS คัดเลือกเฉพาะบุคลากรระดับหัวกะทิเพื่อรักษามาตรฐานสูงสุดตามสโลแกน Mission First:</p>
                 <ul class="req-list">
-                    <li>ผ่านการตรวจสอบประวัติอาชญากรรมและการทุจริตเชิงลึก (Internal Security Bureau Control)</li>
-                    <li>หากสมัครส่วนรบพิเศษ ต้องผ่านหลักสูตรทางทหารระดับสากล หรือเทียบเท่าการฝึกระดับ 2 ขององค์กร</li>
-                    <li>ยินยอมปฏิบัติตามข้อตกลงรักษาความลับขั้นสูงสุด (NDA) ข้อมูลพิมพ์เขียวอาวุธปืนและกระจกนิรภัย</li>
+                    <li>ผ่านการตรวจสอบประวัติอาชญากรรมเชิงลึก</li>
+                    <li>ยินยอมปฏิบัติตามข้อตกลงรักษาความลับขั้นสูงสุด (NDA)</li>
                 </ul>
             </div>
         </div>
